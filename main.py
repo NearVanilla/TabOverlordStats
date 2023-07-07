@@ -1,13 +1,11 @@
 import json
-from pprint import pprint
-
-import brr
+import minecraft_data
 
 
 class Main:
     def __init__(self, version):
         self.version = version
-        self.mcdata = brr(version)
+        self.mcdata = minecraft_data(version)
         self.breakable_items = ["shield", "shears", "fishing_rod", "carrot_on_a_stick", "flint_and_steel", "bow",
                                 "crossbow" "trident", "elytra", "warped_fungus_on_a_stick", "brush", "turtle_helmet",
                                 "leather_helmet", "leather_chestplate", "leather_leggings", "leather_boots",
@@ -17,9 +15,12 @@ class Main:
                                 "golden_helmet", "golden_chestplate", "golden_leggings", "golden_boots",
                                 "netherite_helmet", "netherite_chestplate", "netherite_leggings", "netherite_boots",
                                 "wooden_axe", "stone_axe", "iron_axe", "diamond_axe", "golden_axe", "netherite_axe",
-                                "wooden_sword", "stone_sword", "iron_sword", "diamond_sword", "golden_sword", "netherite_sword",
-                                "wooden_pickaxe", "stone_pickaxe", "iron_pickaxe", "diamond_pickaxe", "golden_pickaxe", "netherite_pickaxe",
-                                "wooden_shovel", "stone_shovel", "iron_shovel", "diamond_shovel", "golden_shovel", "netherite_shovel",
+                                "wooden_sword", "stone_sword", "iron_sword", "diamond_sword", "golden_sword",
+                                "netherite_sword",
+                                "wooden_pickaxe", "stone_pickaxe", "iron_pickaxe", "diamond_pickaxe", "golden_pickaxe",
+                                "netherite_pickaxe",
+                                "wooden_shovel", "stone_shovel", "iron_shovel", "diamond_shovel", "golden_shovel",
+                                "netherite_shovel",
                                 "wooden_hoe", "stone_hoe", "iron_hoe", "diamond_hoe", "golden_hoe", "netherite_hoe"
                                 ]
 
