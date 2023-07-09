@@ -42,7 +42,7 @@ def print_hi():
     killed_by = main.make_killed_by(main.mcdata.entities_name, "kb", "minecraft.killed_by", "Killed by %s")
     custom = main.make_custom(main.custom_stats, "z", "minecraft.custom", "%s")
 
-    with open("stats.list", "a") as stats_list:
+    with open("stats.list", "w") as stats_list:
         _tmp = []
         for stat in (mined, crafted, broken, dropped, picked_up, killed, killed_by, custom):
             _tmp += [item + "\n" for item in stat["criteria"].values()]
