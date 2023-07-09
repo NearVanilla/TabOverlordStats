@@ -1,5 +1,6 @@
 import json
 import os
+import random
 
 import minecraft_data
 
@@ -40,7 +41,12 @@ def print_hi():
     killed = main.make_killed(main.mcdata.entities_name, "k", "minecraft.killed", "%s Killed")
     killed_by = main.make_killed_by(main.mcdata.entities_name, "kb", "minecraft.killed_by", "Killed by %s")
     custom = main.make_custom(main.custom_stats, "z", "minecraft.custom", "%s")
-    print(custom)
+
+    with open("stats.list", "a") as stats_list:
+        _tmp = []
+        for stat in (mined, crafted, broken, dropped, picked_up, killed, killed_by, custom):
+            _tmp += [item + "\n" for item in stat["criteria"].values()]
+        stats_list.writelines(_tmp)
 
 
 if __name__ == '__main__':
