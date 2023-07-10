@@ -2,15 +2,14 @@ import os
 import subprocess
 from pathlib import Path
 
-import blacklists
-import make
-from minecraft_data import minecraft_data
+from utils import make, blacklists
+from utils.minecraft_data import minecraft_data
 
 
 def extract(version):
     if not os.path.exists(f"{version}.json"):
         print(f"Extracting data for version {version}")
-        subprocess.run(["python", Path.joinpath(Path.cwd().joinpath("Burger/munch.py")), "--download", version, "--toppings", "blocks,entities,items,recipes", "-o", f"{version}.json"])
+        subprocess.run(["python", Path.joinpath(Path.cwd().joinpath("Burger/munch.py")), "--download", version, "--toppings", "blocks,entities,items,recipes", "-o", f"{Path.joinpath(Path.cwd(), 'data')}/{version}.json"])
         os.remove(Path(os.getcwd(), f"{version}.jar"))
         print_hi()
 
@@ -18,7 +17,7 @@ def extract(version):
 class Main:
     def __init__(self, version):
         self.version = version
-        with open(f"{version}.json", "r") as version_file:
+        with open(f"{Path.joinpath(Path.cwd(), 'data')}/{version}.json", "r") as version_file:
             self.mcdata = minecraft_data.from_json(version_file.read())
 
         self.make = make.Make(self.mcdata)
@@ -37,7 +36,7 @@ class Main:
 def print_hi():
     version = "1.20.1"
 
-    if not Path.exists(Path.joinpath(Path.cwd(), f"{version}.json")):
+    if not Path.exists(Path.joinpath(Path.cwd(), f"{Path.joinpath(Path.cwd(), 'data')}/{version}.json")):
         extract(version)
     else:
         main = Main(version)
@@ -51,7 +50,7 @@ def print_hi():
         killed_by = main.make_killed_by(main.mcdata.entities["entity"], "kb", "minecraft.killed_by", "Killed by %s")
         custom = main.make_custom(main.custom_stats, "z", "minecraft.custom", "%s")
 
-        with open("stats.list", "w") as stats_list:
+        with open("data/stats.list", "w") as stats_list:
             _tmp = []
             for stat in (mined, crafted, broken, dropped, picked_up, killed, killed_by, custom):
                 _tmp += [item + "\n" for item in stat["criteria"].values()]
