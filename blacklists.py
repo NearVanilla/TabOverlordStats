@@ -71,7 +71,7 @@ default_blacklist = unbreakable_items + creative_only_items + [
     "white_candle_cake"
 ]
 
-mined_blacklist = [
+mined_blacklist = unbreakable_items + [
     "piston_head", "spawner", "water_cauldron", "lava_cauldron", "powder_snow_cauldron", "budding_amethyst",
     "netherite_block", "respawn_anchor", "lodestone"
 ]
@@ -101,5 +101,5 @@ killed_whitelist = killed_by_whitelist
 
 custom_blacklist = [
     # generalButton, itemsButton, mobsButton are included in the stats for some reason im not sure why or what they are used for?
-    "generalButton", "itemsButton", "mobsButton", "minecraft.total_world_time", "leave_game", "play_time",
+    "generalButton", "itemsButton", "mobsButton", "total_world_time", "leave_game", "play_time",
 ]
