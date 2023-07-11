@@ -68,7 +68,7 @@ default_blacklist = unbreakable_items + creative_only_items + [
     "brown_candle_cake", "blue_candle_cake", "purple_candle_cake", "cyan_candle_cake",
     "light_gray_candle_cake", "gray_candle_cake", "pink_candle_cake", "lime_candle_cake",
     "yellow_candle_cake", "light_blue_candle_cake", "magenta_candle_cake", "orange_candle_cake",
-    "white_candle_cake"
+    "white_candle_cake", "knowledge_book", "chorus_plant"
 ]
 
 mined_blacklist = unbreakable_items + [
@@ -87,7 +87,7 @@ dropped_blacklist = smithing_templates + spawn_eggs + infested_blocks + default_
     "tall_grass", "large_fern", "dragon_egg"
 ]
 
-picked_up_blacklist = spawn_eggs + infested_blocks + default_blacklist + []
+picked_up_blacklist = spawn_eggs + infested_blocks + default_blacklist + smithing_templates + ["dragon_egg"]
 
 killed_by_whitelist = [
     "elder_guardian", "ender_dragon", "goat", "guardian", "husk", "stray", "zoglin", "bee", "blaze", "cave_spider",

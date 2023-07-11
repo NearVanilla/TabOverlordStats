@@ -1,12 +1,52 @@
-class Make:
-    def __init__(self, minecraft_data):
-        self.mcdata = minecraft_data
+import os
+from pathlib import Path
 
-    def create_command(self, data):
-        commands = []
-        for index in data["dictionary"]:
-            commands.append(f"""scoreboard objectives add {data["dictionary"][index]} {data["criteria"][index]} \"{data['display_names'][index]}\"""")
-        return commands
+from utils import blacklists
+from utils.minecraft_data import minecraft_data
+
+
+def gen(version):
+    make_mined, make_crafted, make_broken, make_dropped, make_picked_up, make_killed, make_killed_by, make_custom, custom_stats, mcdata = _gen(version)
+    mined = make_mined(mcdata.blocks["block"], 'm', "minecraft.mined", "%s Mined")
+    crafted = make_crafted(mcdata.items["item"], "c", "minecraft.crafted", "%s Crafted")
+    broken = make_broken(mcdata.items["item"], "b", "minecraft.broken", "%s Broken")
+    dropped = make_dropped(mcdata.items["item"], "d", "minecraft.dropped", "%s Dropped")
+    picked_up = make_picked_up(mcdata.items["item"], "p", "minecraft.picked_up", "%s Picked up")
+    killed = make_killed(mcdata.entities["entity"], "k", "minecraft.killed", "%s Killed")
+    killed_by = make_killed_by(mcdata.entities["entity"], "kb", "minecraft.killed_by", "Killed by %s")
+    custom = make_custom(custom_stats, "z", "minecraft.custom", "%s")
+
+    with open(os.path.join(os.getcwd(), "data/stats.list"), "w") as stats_list:
+        _tmp = []
+        for stat in (mined, crafted, broken, dropped, picked_up, killed, killed_by, custom):
+            _tmp += [item + "\n" for item in stat["criteria"].values()]
+        stats_list.writelines(_tmp)
+    return "Saved scores into data/stats.list."
+
+
+def _gen(version):
+    version = version
+    with open(f"{Path.joinpath(Path.cwd(), 'data')}/{version}.json", "r") as version_file:
+        mcdata = minecraft_data.from_json(version_file.read())
+
+        make = Make(mcdata)
+        custom_stats = mcdata.language["stat"]
+
+        make_mined = make.create_make_function(blacklists.mined_blacklist + blacklists.default_blacklist)
+        make_crafted = make.create_make_function(blacklists.craftable_blacklist + blacklists.default_blacklist, has_recipe=True)
+        make_broken = make.create_make_function(None, whitelist=blacklists.breakable_items)
+        make_dropped = make.create_make_function(blacklists.dropped_blacklist + blacklists.netherite + blacklists.diamond + blacklists.iron + blacklists.gold + blacklists.chainmail + blacklists.leather + blacklists.wooden + blacklists.stone)
+        make_picked_up = make.create_make_function(blacklists.picked_up_blacklist + blacklists.default_blacklist)
+        make_killed = make.create_make_function(None, is_entity=True, whitelist=blacklists.killed_whitelist)
+        make_killed_by = make.create_make_function(None, is_entity=True, whitelist=blacklists.killed_by_whitelist)
+        make_custom = make.create_make_function(blacklists.custom_blacklist + blacklists.default_blacklist, is_custom=True)
+
+        return make_mined, make_crafted, make_broken, make_dropped, make_picked_up, make_killed, make_killed_by, make_custom, custom_stats, mcdata
+
+
+class Make:
+    def __init__(self, _minecraft_data):
+        self.mcdata = _minecraft_data
 
     def _has_crafting_recipe(self, item):
         try:

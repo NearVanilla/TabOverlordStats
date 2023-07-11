@@ -177,7 +177,6 @@ minecraft.mined:minecraft.chiseled_red_sandstone
 minecraft.mined:minecraft.chiseled_sandstone
 minecraft.mined:minecraft.chiseled_stone_bricks
 minecraft.mined:minecraft.chorus_flower
-minecraft.mined:minecraft.chorus_plant
 minecraft.mined:minecraft.clay
 minecraft.mined:minecraft.coal_block
 minecraft.mined:minecraft.coal_ore
@@ -1223,7 +1222,6 @@ minecraft.dropped:minecraft.chiseled_sandstone
 minecraft.dropped:minecraft.chiseled_stone_bricks
 minecraft.dropped:minecraft.chorus_flower
 minecraft.dropped:minecraft.chorus_fruit
-minecraft.dropped:minecraft.chorus_plant
 minecraft.dropped:minecraft.clay
 minecraft.dropped:minecraft.clay_ball
 minecraft.dropped:minecraft.clock
@@ -1525,7 +1523,6 @@ minecraft.dropped:minecraft.jungle_stairs
 minecraft.dropped:minecraft.jungle_trapdoor
 minecraft.dropped:minecraft.jungle_wood
 minecraft.dropped:minecraft.kelp
-minecraft.dropped:minecraft.knowledge_book
 minecraft.dropped:minecraft.ladder
 minecraft.dropped:minecraft.lantern
 minecraft.dropped:minecraft.lapis_block
@@ -2291,7 +2288,6 @@ minecraft.picked_up:minecraft.chiseled_sandstone
 minecraft.picked_up:minecraft.chiseled_stone_bricks
 minecraft.picked_up:minecraft.chorus_flower
 minecraft.picked_up:minecraft.chorus_fruit
-minecraft.picked_up:minecraft.chorus_plant
 minecraft.picked_up:minecraft.clay
 minecraft.picked_up:minecraft.clay_ball
 minecraft.picked_up:minecraft.clock
@@ -2299,7 +2295,6 @@ minecraft.picked_up:minecraft.coal
 minecraft.picked_up:minecraft.coal_block
 minecraft.picked_up:minecraft.coal_ore
 minecraft.picked_up:minecraft.coarse_dirt
-minecraft.picked_up:minecraft.coast_armor_trim_smithing_template
 minecraft.picked_up:minecraft.cobbled_deepslate
 minecraft.picked_up:minecraft.cobbled_deepslate_slab
 minecraft.picked_up:minecraft.cobbled_deepslate_stairs
@@ -2455,13 +2450,11 @@ minecraft.picked_up:minecraft.dirt_path
 minecraft.picked_up:minecraft.disc_fragment_5
 minecraft.picked_up:minecraft.dispenser
 minecraft.picked_up:minecraft.dragon_breath
-minecraft.picked_up:minecraft.dragon_egg
 minecraft.picked_up:minecraft.dragon_head
 minecraft.picked_up:minecraft.dried_kelp
 minecraft.picked_up:minecraft.dried_kelp_block
 minecraft.picked_up:minecraft.dripstone_block
 minecraft.picked_up:minecraft.dropper
-minecraft.picked_up:minecraft.dune_armor_trim_smithing_template
 minecraft.picked_up:minecraft.echo_shard
 minecraft.picked_up:minecraft.egg
 minecraft.picked_up:minecraft.elytra
@@ -2487,7 +2480,6 @@ minecraft.picked_up:minecraft.exposed_copper
 minecraft.picked_up:minecraft.exposed_cut_copper
 minecraft.picked_up:minecraft.exposed_cut_copper_slab
 minecraft.picked_up:minecraft.exposed_cut_copper_stairs
-minecraft.picked_up:minecraft.eye_armor_trim_smithing_template
 minecraft.picked_up:minecraft.farmland
 minecraft.picked_up:minecraft.feather
 minecraft.picked_up:minecraft.fermented_spider_eye
@@ -2590,7 +2582,6 @@ minecraft.picked_up:minecraft.hopper_minecart
 minecraft.picked_up:minecraft.horn_coral
 minecraft.picked_up:minecraft.horn_coral_block
 minecraft.picked_up:minecraft.horn_coral_fan
-minecraft.picked_up:minecraft.host_armor_trim_smithing_template
 minecraft.picked_up:minecraft.howl_pottery_sherd
 minecraft.picked_up:minecraft.ice
 minecraft.picked_up:minecraft.ink_sac
@@ -2632,7 +2623,6 @@ minecraft.picked_up:minecraft.jungle_stairs
 minecraft.picked_up:minecraft.jungle_trapdoor
 minecraft.picked_up:minecraft.jungle_wood
 minecraft.picked_up:minecraft.kelp
-minecraft.picked_up:minecraft.knowledge_book
 minecraft.picked_up:minecraft.ladder
 minecraft.picked_up:minecraft.lantern
 minecraft.picked_up:minecraft.lapis_block
@@ -2802,7 +2792,6 @@ minecraft.picked_up:minecraft.netherite_pickaxe
 minecraft.picked_up:minecraft.netherite_scrap
 minecraft.picked_up:minecraft.netherite_shovel
 minecraft.picked_up:minecraft.netherite_sword
-minecraft.picked_up:minecraft.netherite_upgrade_smithing_template
 minecraft.picked_up:minecraft.netherrack
 minecraft.picked_up:minecraft.note_block
 minecraft.picked_up:minecraft.oak_boat
@@ -2951,7 +2940,6 @@ minecraft.picked_up:minecraft.rabbit_foot
 minecraft.picked_up:minecraft.rabbit_hide
 minecraft.picked_up:minecraft.rabbit_stew
 minecraft.picked_up:minecraft.rail
-minecraft.picked_up:minecraft.raiser_armor_trim_smithing_template
 minecraft.picked_up:minecraft.raw_copper
 minecraft.picked_up:minecraft.raw_copper_block
 minecraft.picked_up:minecraft.raw_gold
@@ -2991,7 +2979,6 @@ minecraft.picked_up:minecraft.redstone_ore
 minecraft.picked_up:minecraft.redstone_torch
 minecraft.picked_up:minecraft.repeater
 minecraft.picked_up:minecraft.respawn_anchor
-minecraft.picked_up:minecraft.rib_armor_trim_smithing_template
 minecraft.picked_up:minecraft.rooted_dirt
 minecraft.picked_up:minecraft.rose_bush
 minecraft.picked_up:minecraft.rotten_flesh
@@ -3013,8 +3000,6 @@ minecraft.picked_up:minecraft.scute
 minecraft.picked_up:minecraft.sea_lantern
 minecraft.picked_up:minecraft.sea_pickle
 minecraft.picked_up:minecraft.seagrass
-minecraft.picked_up:minecraft.sentry_armor_trim_smithing_template
-minecraft.picked_up:minecraft.shaper_armor_trim_smithing_template
 minecraft.picked_up:minecraft.sheaf_pottery_sherd
 minecraft.picked_up:minecraft.shears
 minecraft.picked_up:minecraft.shelter_pottery_sherd
@@ -3022,7 +3007,6 @@ minecraft.picked_up:minecraft.shield
 minecraft.picked_up:minecraft.shroomlight
 minecraft.picked_up:minecraft.shulker_box
 minecraft.picked_up:minecraft.shulker_shell
-minecraft.picked_up:minecraft.silence_armor_trim_smithing_template
 minecraft.picked_up:minecraft.skeleton_skull
 minecraft.picked_up:minecraft.skull_banner_pattern
 minecraft.picked_up:minecraft.skull_pottery_sherd
@@ -3046,7 +3030,6 @@ minecraft.picked_up:minecraft.smooth_stone
 minecraft.picked_up:minecraft.smooth_stone_slab
 minecraft.picked_up:minecraft.sniffer_egg
 minecraft.picked_up:minecraft.snort_pottery_sherd
-minecraft.picked_up:minecraft.snout_armor_trim_smithing_template
 minecraft.picked_up:minecraft.snow
 minecraft.picked_up:minecraft.snow_block
 minecraft.picked_up:minecraft.snowball
@@ -3057,7 +3040,6 @@ minecraft.picked_up:minecraft.soul_soil
 minecraft.picked_up:minecraft.soul_torch
 minecraft.picked_up:minecraft.spectral_arrow
 minecraft.picked_up:minecraft.spider_eye
-minecraft.picked_up:minecraft.spire_armor_trim_smithing_template
 minecraft.picked_up:minecraft.splash_potion
 minecraft.picked_up:minecraft.sponge
 minecraft.picked_up:minecraft.spore_blossom
@@ -3127,7 +3109,6 @@ minecraft.picked_up:minecraft.tadpole_bucket
 minecraft.picked_up:minecraft.tall_grass
 minecraft.picked_up:minecraft.target
 minecraft.picked_up:minecraft.terracotta
-minecraft.picked_up:minecraft.tide_armor_trim_smithing_template
 minecraft.picked_up:minecraft.tinted_glass
 minecraft.picked_up:minecraft.tipped_arrow
 minecraft.picked_up:minecraft.tnt
@@ -3149,9 +3130,7 @@ minecraft.picked_up:minecraft.turtle_egg
 minecraft.picked_up:minecraft.turtle_helmet
 minecraft.picked_up:minecraft.twisting_vines
 minecraft.picked_up:minecraft.verdant_froglight
-minecraft.picked_up:minecraft.vex_armor_trim_smithing_template
 minecraft.picked_up:minecraft.vine
-minecraft.picked_up:minecraft.ward_armor_trim_smithing_template
 minecraft.picked_up:minecraft.warped_button
 minecraft.picked_up:minecraft.warped_door
 minecraft.picked_up:minecraft.warped_fence
@@ -3187,7 +3166,6 @@ minecraft.picked_up:minecraft.waxed_weathered_copper
 minecraft.picked_up:minecraft.waxed_weathered_cut_copper
 minecraft.picked_up:minecraft.waxed_weathered_cut_copper_slab
 minecraft.picked_up:minecraft.waxed_weathered_cut_copper_stairs
-minecraft.picked_up:minecraft.wayfinder_armor_trim_smithing_template
 minecraft.picked_up:minecraft.weathered_copper
 minecraft.picked_up:minecraft.weathered_cut_copper
 minecraft.picked_up:minecraft.weathered_cut_copper_slab
@@ -3210,7 +3188,6 @@ minecraft.picked_up:minecraft.white_stained_glass_pane
 minecraft.picked_up:minecraft.white_terracotta
 minecraft.picked_up:minecraft.white_tulip
 minecraft.picked_up:minecraft.white_wool
-minecraft.picked_up:minecraft.wild_armor_trim_smithing_template
 minecraft.picked_up:minecraft.wither_rose
 minecraft.picked_up:minecraft.wither_skeleton_skull
 minecraft.picked_up:minecraft.wooden_axe
