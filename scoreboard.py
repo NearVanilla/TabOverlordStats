@@ -23,4 +23,4 @@ with stats_file.open() as stats_file, used_stats_file.open(mode="r+") as used_st
 
     # Run the "mc_NBT_top_scores.py" script to freeze the previous scores into secret_stat.json
     script_file = script_dir / "utils/mc_NBT_top_scores.py"
-    subprocess.run(["python", script_file, "-w", "secret", "-t", "secret_stat.json"], check=True)
+    subprocess.run(["python", script_file, "-i", script_dir / "data/scoreboard.dat", "-w", "time", "-t", "secret_stat.json"], check=True)
