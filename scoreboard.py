@@ -71,8 +71,6 @@ with stats_file.open() as stats_file, used_stats_file.open(
     _commands.append(f'scoreboard objectives add tab_overlord {chosen_stat}')
 
     _commands_string = "\n".join(_commands)
-    print("Current Scoreboard: " + objective_name)
-    print("Old Scoreboard: " + objective_name)
     subprocess.run(
         ["docker-compose", "exec", "-T", "survival", "rcon-cli"],
         input=_commands_string.encode(),
