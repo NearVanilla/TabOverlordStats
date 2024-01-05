@@ -222,13 +222,11 @@ class Make:
         is_custom=False,
         whitelist=None,
     ):
-
         conditions = {
             "entity_whitelist": lambda entity: entity["name"] in whitelist,
             "item_whitelist": lambda item: item["text_id"] in whitelist,
-            "recipe": lambda item: item[
-                "text_id"
-            ] not in blacklist and self._has_crafting_recipe(item),
+            "recipe": lambda item: item["text_id"] not in blacklist
+            and self._has_crafting_recipe(item),
             "custom_blacklist": lambda custom: custom not in blacklist,
             "default": lambda item: item["text_id"] not in blacklist,
         }
