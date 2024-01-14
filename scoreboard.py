@@ -3,6 +3,7 @@ import random
 import subprocess
 from pathlib import Path
 import re
+import sys
 
 script_dir = Path(__file__).resolve().parent
 
@@ -68,63 +69,70 @@ def convert_to_title_case(objective_name: str) -> str:
     return objective_name.lower().title().replace("Custom ", "")
     
     
+if len(sys.argv) != 2:
+    print(f"Usage: {__file__} <PATH_TO_SCOREBOARD>")
+    sys.exit(1)
+
+scoreboard_path = Path(sys.argv[1])
+assert scoreboard_path.exist()
 
 # Create the "usedStats.list" file if it doesn't exist
-used_stats_file = script_dir / "data/usedStats.list"
-used_stats_file.touch(exist_ok=True)
+used_stats_path = script_dir / "data/usedStats.list"
+used_stats_path.touch(exist_ok=True)
 
 # Read the stats from the "stats.list" file and remove the used stats from the set
-stats_file = script_dir / "data/stats.list"
-with stats_file.open() as stats_file, used_stats_file.open(mode="r+") as used_stats_file:
+stats_path = script_dir / "data/stats.list"
+
+# Calculate new stat
+with stats_path.open() as stats_file:
     stats = set(stats_file.read().splitlines())
-    used_stats = set(used_stats_file.read().splitlines())
-    unused_stats = stats - used_stats
+with used_stats_path.open() as used_stats_file:
+    used_stats = used_stats_file.read().splitlines()
+unused_stats = stats.difference(used_stats)
 
-    # Choose a random stat from the remaining stats
-    chosen_stat = random.choice(tuple(unused_stats))
+commands = []
 
-    # Add the chosen stat to the "usedStats.list" file
-    used_stats_file.write(f"{chosen_stat}\n")
-
-    # Run the "mc_NBT_top_scores.py" script to freeze the previous scores into secret_stat.json
-    script_file = script_dir / "utils/mc_NBT_top_scores.py"
-    subprocess.run(
-        [
-            "python3",
-            script_file,
-            "-i",
-            script_dir / "../../server-config/survival/world/data/scoreboard.dat",
-            "-w",
-            "tab_overlord",
-            "-t",
-            "secret_stat.json",
-        ]
-    )
-
-    with open(script_dir / "data/usedStats.list", "r") as _used_stats_file:
-        lines = _used_stats_file.readlines()
-        if lines:
-            old_objective_name = convert_scoreboard_name(lines[-1].strip())
-        else:
-            exit("File is empty, Please rerun the script :)")
-    
-    _commands = []
+# Freeze scores
+if used_stats:
+    old_objective_name = convert_scoreboard_name(used_stats[-1].strip())
 
     # Reset the tracking scoreboard
-    _commands.append("scoreboard objectives remove old_tab_overlord")
-    _commands.append(f'scoreboard objectives add old_tab_overlord dummy "{old_objective_name}"')
+    commands.append("scoreboard objectives remove old_tab_overlord")
+    commands.append(f'scoreboard objectives add old_tab_overlord dummy "{old_objective_name}"')
+
+    # Run the "mc_NBT_top_scores.py" script to freeze the previous scores into secret_stat.json
+    script_path = script_dir / "utils/mc_NBT_top_scores.py"
+    subprocess.run(
+    [
+        "python3",
+        script_path,
+        "-i",
+        scoreboard_path,
+        "-w",
+        "tab_overlord",
+        "-t",
+        "secret_stat.json",
+    ]
+    )
 
     # Copy scores
     with open("secret_stat.json", "r") as secret_stat_file:
         secret_stat_json = json.load(secret_stat_file)
 
         for score in secret_stat_json["scores"]["tab_overlord"]["scores"]:
-            _commands.append(f"scoreboard players set {score['playerName']} old_tab_overlord {score['score']}")
+            commands.append(f"scoreboard players set {score['playerName']} old_tab_overlord {score['score']}")
 
-    # Replace the tracking scoreboard
-    _commands.append("scoreboard objectives remove tab_overlord")
-    _commands.append(f'scoreboard objectives add tab_overlord {chosen_stat}')
 
-    _commands_string = "\n".join(_commands)
-    print(_commands_string)
-    subprocess.run(["docker-compose", "exec", "-T", "survival", "rcon-cli"], input=_commands_string.encode())
+# Choose a random stat from the remaining stats
+chosen_stat = random.choice(tuple(unused_stats))
+
+# Add the chosen stat to the "usedStats.list" file
+used_stats_file.write(f"{chosen_stat}\n")
+
+# Replace the tracking scoreboard
+commands.append("scoreboard objectives remove tab_overlord")
+commands.append(f'scoreboard objectives add tab_overlord {chosen_stat}')
+
+commands_string = "\n".join(commands)
+print(commands_string)
+subprocess.run(["docker-compose", "exec", "-T", "survival", "rcon-cli"], input=commands_string.encode())
