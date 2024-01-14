@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import json
 import random
 import subprocess
@@ -74,7 +75,7 @@ if len(sys.argv) != 2:
     sys.exit(1)
 
 scoreboard_path = Path(sys.argv[1])
-assert scoreboard_path.exist()
+assert scoreboard_path.exists()
 
 # Create the "usedStats.list" file if it doesn't exist
 used_stats_path = script_dir / "data/usedStats.list"
@@ -104,7 +105,7 @@ if used_stats:
     script_path = script_dir / "utils/mc_NBT_top_scores.py"
     subprocess.run(
     [
-        "python3",
+        sys.executable or "python3",
         script_path,
         "-i",
         scoreboard_path,
@@ -112,7 +113,8 @@ if used_stats:
         "tab_overlord",
         "-t",
         "secret_stat.json",
-    ]
+    ],
+    check=True,
     )
 
     # Copy scores
@@ -127,12 +129,14 @@ if used_stats:
 chosen_stat = random.choice(tuple(unused_stats))
 
 # Add the chosen stat to the "usedStats.list" file
-used_stats_file.write(f"{chosen_stat}\n")
+with used_stats_path.open('a') as used_stats_file:
+    used_stats_file.write(f"{chosen_stat}\n")
 
 # Replace the tracking scoreboard
 commands.append("scoreboard objectives remove tab_overlord")
 commands.append(f'scoreboard objectives add tab_overlord {chosen_stat}')
+commands.append("scoreboard objectives setdisplay list tab_overlord")
 
 commands_string = "\n".join(commands)
 print(commands_string)
-subprocess.run(["docker-compose", "exec", "-T", "survival", "rcon-cli"], input=commands_string.encode())
+subprocess.run(["docker", "compose", "exec", "-T", "survival", "rcon-cli"], input=commands_string.encode())
