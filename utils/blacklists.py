@@ -9,7 +9,7 @@ def generate_breakable_blacklist(item_type: str) -> List[str]:
         "netherite": armor_type + tool_types,
         "diamond": armor_type + tool_types,
         "iron": armor_type + tool_types,
-        "gold": armor_type + tool_types,
+        "golden": armor_type + tool_types,
         "leather": armor_type,
         "chainmail": armor_type,
         "wooden": tool_types,
