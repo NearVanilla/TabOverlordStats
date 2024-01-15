@@ -23,7 +23,7 @@ breakable_items = (
     generate_breakable_blacklist("netherite")
     + generate_breakable_blacklist("diamond")
     + generate_breakable_blacklist("iron")
-    + generate_breakable_blacklist("gold")
+    + generate_breakable_blacklist("golden")
     + generate_breakable_blacklist("leather")
     + generate_breakable_blacklist("chainmail")
     + generate_breakable_blacklist("wooden")
